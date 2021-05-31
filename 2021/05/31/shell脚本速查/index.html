@@ -6,17 +6,17 @@
   <meta name="keywords" content=" shell ">
   <meta name="description" content="shell脚本速查 | Curtain&#39;s Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="shell脚本var&#x3D;&quot;123&quot; &#96;ls -al&#96; &#x3D;&#x3D; $(ls -al) echo $var &#x3D;&#x3D;&#x3D; echo $&amp;#123;var&amp;#125; 获取字符段长度 length&#x3D;$&amp;#123;#string&amp;#125; :&lt;&lt;EOF 注释内容 EOF  关系运算符 -eq    检测两个数是否相等，相等返回 true。    [ $a -eq $b ] 返回 fa">
+<meta name="description" content="红方人员实战手册声明Author : By klion Date   : 2020.2.15 寄语    : 愿 2020 后面的每一天都能一切安好  分享初衷一来, 旨在为 &quot;攻击&quot; &#x2F; &quot;防御&quot;方 提供更加全面实用的参考 还是那句老闲话 &quot;未知攻焉知防&quot;, 所有单纯去说 &quot;攻&quot; 或者 &quot;防&quot; 的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell脚本速查">
-<meta property="og:url" content="http://www.osshell.com/2021/05/31/shell%E8%84%9A%E6%9C%AC%E9%80%9F%E6%9F%A5/index.html">
+<meta property="og:title" content="红方人员实战手册">
+<meta property="og:url" content="http://www.osshell.com/2021/05/31/%E7%BA%A2%E6%96%B9%E4%BA%BA%E5%91%98%E5%AE%9E%E6%88%98%E6%89%8B%E5%86%8C/index.html">
 <meta property="og:site_name" content="Curtain&#39;s Blog">
-<meta property="og:description" content="shell脚本var&#x3D;&quot;123&quot; &#96;ls -al&#96; &#x3D;&#x3D; $(ls -al) echo $var &#x3D;&#x3D;&#x3D; echo $&amp;#123;var&amp;#125; 获取字符段长度 length&#x3D;$&amp;#123;#string&amp;#125; :&lt;&lt;EOF 注释内容 EOF  关系运算符 -eq    检测两个数是否相等，相等返回 true。    [ $a -eq $b ] 返回 fa">
+<meta property="og:description" content="红方人员实战手册声明Author : By klion Date   : 2020.2.15 寄语    : 愿 2020 后面的每一天都能一切安好  分享初衷一来, 旨在为 &quot;攻击&quot; &#x2F; &quot;防御&quot;方 提供更加全面实用的参考 还是那句老闲话 &quot;未知攻焉知防&quot;, 所有单纯去说 &quot;攻&quot; 或者 &quot;防&quot; 的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-31T03:12:41.912Z">
-<meta property="article:modified_time" content="2021-05-31T03:12:41.912Z">
+<meta property="article:published_time" content="2021-05-31T03:20:53.573Z">
+<meta property="article:modified_time" content="2021-05-31T03:20:53.573Z">
 <meta property="article:author" content="Curtain">
-<meta property="article:tag" content="shell">
+<meta property="article:tag" content="redteam">
 <meta name="twitter:card" content="summary">
 
 
@@ -103,7 +103,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(3)</small>
+                <small>(6)</small>
             
         </div>
     </li>
@@ -114,7 +114,7 @@
                     <div data-rel="Exploits">
                         
                         Exploits
-                        <small>(1)</small>
+                        <small>(3)</small>
                         
                     </div>
                     
@@ -128,7 +128,7 @@
                     <div data-rel="Notes">
                         
                         Notes
-                        <small>(2)</small>
+                        <small>(3)</small>
                         
                     </div>
                     
@@ -151,7 +151,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="3">
+<input type="hidden" id="yelog_site_posts_number" value="6">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -202,11 +202,23 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Kibana</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>redteam</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>shell</a>
             </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>SQLi</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Winrar</a>
             </li>
         
     </div>
@@ -217,11 +229,27 @@
     <nav id="title-list-nav">
         
         <a  class="全部文章 Notes "
-           href="/2021/05/31/shell%E8%84%9A%E6%9C%AC%E9%80%9F%E6%9F%A5/"
-           data-tag="shell"
+           href="/2021/05/31/%E7%BA%A2%E6%96%B9%E4%BA%BA%E5%91%98%E5%AE%9E%E6%88%98%E6%89%8B%E5%86%8C/"
+           data-tag="redteam"
            data-author="" >
-            <span class="post-title" title="shell脚本速查">shell脚本速查</span>
-            <span class="post-date" title="2021-05-31 11:12:41">2021/05/31</span>
+            <span class="post-title" title="红方人员实战手册">红方人员实战手册</span>
+            <span class="post-date" title="2021-05-31 11:20:53">2021/05/31</span>
+        </a>
+        
+        <a  class="全部文章 Exploits "
+           href="/2021/05/31/winrar%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%A4%8D%E7%8E%B0/"
+           data-tag="Winrar"
+           data-author="" >
+            <span class="post-title" title="winrar命令执行复现">winrar命令执行复现</span>
+            <span class="post-date" title="2021-05-31 11:20:45">2021/05/31</span>
+        </a>
+        
+        <a  class="全部文章 Exploits "
+           href="/2021/05/31/Kibana%20%3C%206.6.1%20%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0CVE-2019-7609/"
+           data-tag="Kibana"
+           data-author="" >
+            <span class="post-title" title="Kibana &lt; 6.6.1 代码执行漏洞复现CVE-2019-7609">Kibana &lt; 6.6.1 代码执行漏洞复现CVE-2019-7609</span>
+            <span class="post-date" title="2021-05-31 11:20:38">2021/05/31</span>
         </a>
         
         <a  class="全部文章 Notes "
@@ -229,7 +257,15 @@
            data-tag="SQLi"
            data-author="" >
             <span class="post-title" title="手工SQLi语句备忘录">手工SQLi语句备忘录</span>
-            <span class="post-date" title="2021-05-31 10:27:27">2021/05/31</span>
+            <span class="post-date" title="2021-05-31 11:18:38">2021/05/31</span>
+        </a>
+        
+        <a  class="全部文章 Notes "
+           href="/2021/05/31/shell%E8%84%9A%E6%9C%AC%E9%80%9F%E6%9F%A5/"
+           data-tag="shell"
+           data-author="" >
+            <span class="post-title" title="shell脚本速查">shell脚本速查</span>
+            <span class="post-date" title="2021-05-31 11:18:26">2021/05/31</span>
         </a>
         
         <a  class="全部文章 Exploits "
@@ -285,7 +321,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-05-31 11:12:41'>2021-05-31 11:12</time>
+            发布时间 : <time class="date" title='最后更新: 2021-05-31 11:18:26'>2021-05-31 11:18</time>
         
     </div>
     <div class="article-meta">
@@ -307,7 +343,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#shell%E8%84%9A%E6%9C%AC"><span class="toc-text">shell脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sed%E4%BD%BF%E7%94%A8"><span class="toc-text">sed使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8D%B0%E8%A1%8C"><span class="toc-text">打印行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A1%8C"><span class="toc-text">删除行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">重定向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2"><span class="toc-text">替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E5%90%8E%E5%A2%9E%E5%8A%A0"><span class="toc-text">行后增加</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E5%89%8D%E6%8F%92%E5%85%A5%E8%AF%AD%E6%B3%95"><span class="toc-text">行前插入语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%A1%8C%E8%AF%AD%E6%B3%95"><span class="toc-text">修改行语法</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E8%84%9A%E6%9C%AC"><span class="toc-text">示例脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sed%E4%BD%BF%E7%94%A8"><span class="toc-text">sed使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%8D%B0%E8%A1%8C"><span class="toc-text">打印行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A1%8C"><span class="toc-text">删除行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2"><span class="toc-text">替换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%90%8E%E5%A2%9E%E5%8A%A0"><span class="toc-text">行后增加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%89%8D%E6%8F%92%E5%85%A5%E8%AF%AD%E6%B3%95"><span class="toc-text">行前插入语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%A1%8C%E8%AF%AD%E6%B3%95"><span class="toc-text">修改行语法</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -323,7 +359,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h1><pre><code>var=&quot;123&quot;
+        <h2 id="示例脚本"><a href="#示例脚本" class="headerlink" title="示例脚本"></a>示例脚本</h2><pre><code>var=&quot;123&quot;
 `ls -al` == $(ls -al)
 echo $var === echo $&#123;var&#125;
 获取字符段长度
@@ -375,7 +411,7 @@ command &gt; file 2&gt;&amp;1
 屏蔽stdout和stderr
 command &gt; /dev/null 2&gt;&amp;1
 </code></pre>
-<h1 id="sed使用"><a href="#sed使用" class="headerlink" title="sed使用"></a>sed使用</h1><h2 id="打印行"><a href="#打印行" class="headerlink" title="打印行"></a>打印行</h2><pre><code>sed -n -e &#39;/^root/ p&#39; /etc/passwd == sed -n &#39;&#123;/^root/ p&#125;&#39; /etc/passwd
+<h2 id="sed使用"><a href="#sed使用" class="headerlink" title="sed使用"></a>sed使用</h2><h3 id="打印行"><a href="#打印行" class="headerlink" title="打印行"></a>打印行</h3><pre><code>sed -n -e &#39;/^root/ p&#39; /etc/passwd == sed -n &#39;&#123;/^root/ p&#125;&#39; /etc/passwd
 /^root/:root开头 /nobody$/:nobody结尾
 sed -n &#39;开始行,结束行 p&#39; FILE  开始行和结束行可以是行号也可以是关键字
 # 寻找包含Paul的行
@@ -387,19 +423,19 @@ $sed -n &#39;/Paul/,/Addy/ p&#39; source.txt
 # 在freebsd版sed不能用 匹配Paul行再多输出2行
 $/usr/local/bin/sed -n &#39;/Paul/,+2 p&#39; source.txt
 </code></pre>
-<h2 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h2><pre><code>删除全部行
+<h3 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h3><pre><code>删除全部行
 sed &#39;d&#39; source.txt 
 删除空行
 $sed &#39;/^$/ d&#39; source.txt
 删除评论行
 $sed &#39;/^#/ d&#39; source.txt
 </code></pre>
-<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><pre><code>将内容重定向写到output.txt
+<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><pre><code>将内容重定向写到output.txt
 sed &#39;w output.txt&#39; source.txt
 将匹配到关键字的行写到output.txt
 sed -n &#39;/Ask/,$ w output.txt&#39;
 </code></pre>
-<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><pre><code>sed &#39;[address-range|pattern-range] s/original-
+<h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h3><pre><code>sed &#39;[address-range|pattern-range] s/original-
 string/replacement-string/[substitute-flags]&#39; inputfile
 将Google替换为GitHub
 sed &#39;s/Google/Github/&#39; source.txt
@@ -415,18 +451,18 @@ sed &#39;s/^.*/&lt;&amp;&gt;/&#39; FILE
 sed -i
 sed -ibak
 </code></pre>
-<h2 id="行后增加"><a href="#行后增加" class="headerlink" title="行后增加"></a>行后增加</h2><pre><code>sed &#39;[address] a the-line-to-append&#39; input-file
+<h3 id="行后增加"><a href="#行后增加" class="headerlink" title="行后增加"></a>行后增加</h3><pre><code>sed &#39;[address] a the-line-to-append&#39; input-file
 sed &#39;2 a 108,Donald Stufft, Nebula&#39; source.txt
 101,IAN Bicking,Mozilla
 102,Hakim El Hattab,Whim
 108,Donald Stufft, Nebula
 </code></pre>
-<h2 id="行前插入语法"><a href="#行前插入语法" class="headerlink" title="行前插入语法"></a>行前插入语法</h2><pre><code>sed &#39;2 i 108,Donald Stufft, Nebula&#39; source.txt
+<h3 id="行前插入语法"><a href="#行前插入语法" class="headerlink" title="行前插入语法"></a>行前插入语法</h3><pre><code>sed &#39;2 i 108,Donald Stufft, Nebula&#39; source.txt
 101,IAN Bicking,Mozilla
 108,Donald Stufft, Nebula
 102,Hakim El Hattab,Whim
 </code></pre>
-<h2 id="修改行语法"><a href="#修改行语法" class="headerlink" title="修改行语法"></a>修改行语法</h2><pre><code>sed &#39;/Paul/ c 108,Donald Stufft, Nebula&#39; source.txt
+<h3 id="修改行语法"><a href="#修改行语法" class="headerlink" title="修改行语法"></a>修改行语法</h3><pre><code>sed &#39;/Paul/ c 108,Donald Stufft, Nebula&#39; source.txt
 101,IAN Bicking,Mozilla
 102,Hakim El Hattab,Whim
 108,Donald Stufft, Nebula
