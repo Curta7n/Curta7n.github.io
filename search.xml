@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>shell脚本速查</title>
+      <link href="2021/05/31/shell%E8%84%9A%E6%9C%AC%E9%80%9F%E6%9F%A5/"/>
+      <url>2021/05/31/shell%E8%84%9A%E6%9C%AC%E9%80%9F%E6%9F%A5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h1><pre><code>var=&quot;123&quot;`ls -al` == $(ls -al)echo $var === echo $&#123;var&#125;获取字符段长度length=$&#123;#string&#125;:&lt;&lt;EOF注释内容EOF关系运算符-eq    检测两个数是否相等，相等返回 true。    [ $a -eq $b ] 返回 false。-ne    检测两个数是否不相等，不相等返回 true。    [ $a -ne $b ] 返回 true。-gt    检测左边的数是否大于右边的，如果是，则返回 true。    [ $a -gt $b ] 返回 false。-lt    检测左边的数是否小于右边的，如果是，则返回 true。    [ $a -lt $b ] 返回 true。-ge    检测左边的数是否大于等于右边的，如果是，则返回 true。    [ $a -ge $b ] 返回 false。-le    检测左边的数是否小于等于右边的，如果是，则返回 true。    [ $a -le $b ] 返回 true。布尔运算符运算符!    非运算，表达式为 true 则返回 false，否则返回 true。    [ ! false ] 返回 true。-o    或运算，有一个表达式为 true 则返回 true。    [ $a -lt 20 -o $b -gt 100 ] 返回 true。-a    与运算，两个表达式都为 true 才返回 true。    [ $a -lt 20 -a $b -gt 100 ] 返回 false。字符串运算符运算符=    检测两个字符串是否相等，相等返回 true。    [ $a = $b ] 返回 false。!=    检测两个字符串是否不相等，不相等返回 true。    [ $a != $b ] 返回 true。-z    检测字符串长度是否为0，为0返回 true。    [ -z $a ] 返回 false。-n    检测字符串长度是否不为 0，不为 0 返回 true。    [ -n &quot;$a&quot; ] 返回 true。$    检测字符串是否为空，不为空返回 true。    [ $a ] 返回 true。文件测试运算符操作符-b file    检测文件是否是块设备文件，如果是，则返回 true。    [ -b $file ] 返回 false。-c file    检测文件是否是字符设备文件，如果是，则返回 true。    [ -c $file ] 返回 false。-d file    检测文件是否是目录，如果是，则返回 true。    [ -d $file ] 返回 false。-f file    检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。    [ -f $file ] 返回 true。-g file    检测文件是否设置了 SGID 位，如果是，则返回 true。    [ -g $file ] 返回 false。-k file    检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。    [ -k $file ] 返回 false。-p file    检测文件是否是有名管道，如果是，则返回 true。    [ -p $file ] 返回 false。-u file    检测文件是否设置了 SUID 位，如果是，则返回 true。    [ -u $file ] 返回 false。-r file    检测文件是否可读，如果是，则返回 true。    [ -r $file ] 返回 true。-w file    检测文件是否可写，如果是，则返回 true。    [ -w $file ] 返回 true。-x file    检测文件是否可执行，如果是，则返回 true。    [ -x $file ] 返回 true。-s file    检测文件是否为空（文件大小是否大于0），不为空返回 true。    [ -s $file ] 返回 true。-e file    检测文件（包括目录）是否存在，如果是，则返回 true。    [ -e $file ] 返回 true。将stdout和stderr重定向到filecommand &gt; file 2&gt;&amp;1屏蔽stdout和stderrcommand &gt; /dev/null 2&gt;&amp;1</code></pre><h1 id="sed使用"><a href="#sed使用" class="headerlink" title="sed使用"></a>sed使用</h1><h2 id="打印行"><a href="#打印行" class="headerlink" title="打印行"></a>打印行</h2><pre><code>sed -n -e &#39;/^root/ p&#39; /etc/passwd == sed -n &#39;&#123;/^root/ p&#125;&#39; /etc/passwd/^root/:root开头 /nobody$/:nobody结尾sed -n &#39;开始行,结束行 p&#39; FILE  开始行和结束行可以是行号也可以是关键字# 寻找包含Paul的行$sed -n &#39;/Paul/ p&#39; source.txt# 从第一行开始到第五行, 从找到开始打印到第五行$sed -n &#39;/Paul/,5 p&#39; source.txt# 从匹配Paul行打印达匹配Addy的行$sed -n &#39;/Paul/,/Addy/ p&#39; source.txt# 在freebsd版sed不能用 匹配Paul行再多输出2行$/usr/local/bin/sed -n &#39;/Paul/,+2 p&#39; source.txt</code></pre><h2 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h2><pre><code>删除全部行sed &#39;d&#39; source.txt 删除空行$sed &#39;/^$/ d&#39; source.txt删除评论行$sed &#39;/^#/ d&#39; source.txt</code></pre><h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><pre><code>将内容重定向写到output.txtsed &#39;w output.txt&#39; source.txt将匹配到关键字的行写到output.txtsed -n &#39;/Ask/,$ w output.txt&#39;</code></pre><h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><pre><code>sed &#39;[address-range|pattern-range] s/original-string/replacement-string/[substitute-flags]&#39; inputfile将Google替换为GitHubsed &#39;s/Google/Github/&#39; source.txt替换匹配Addy的行里面的Google为Githubsed &#39;/Addy/s/Google/Github/&#39; source.txtg可以替换每行的全部符合sed &#39;s/a/A/g&#39;  source.txt指定替换第二个匹配项sed &#39;s/a/A/2&#39;  source.txt替换指定内容给两边加上&lt;&gt;sed &#39;s/^.*/&lt;&amp;&gt;/&#39; FILE修改源文件sed -ised -ibak</code></pre><h2 id="行后增加"><a href="#行后增加" class="headerlink" title="行后增加"></a>行后增加</h2><pre><code>sed &#39;[address] a the-line-to-append&#39; input-filesed &#39;2 a 108,Donald Stufft, Nebula&#39; source.txt101,IAN Bicking,Mozilla102,Hakim El Hattab,Whim108,Donald Stufft, Nebula</code></pre><h2 id="行前插入语法"><a href="#行前插入语法" class="headerlink" title="行前插入语法"></a>行前插入语法</h2><pre><code>sed &#39;2 i 108,Donald Stufft, Nebula&#39; source.txt101,IAN Bicking,Mozilla108,Donald Stufft, Nebula102,Hakim El Hattab,Whim</code></pre><h2 id="修改行语法"><a href="#修改行语法" class="headerlink" title="修改行语法"></a>修改行语法</h2><pre><code>sed &#39;/Paul/ c 108,Donald Stufft, Nebula&#39; source.txt101,IAN Bicking,Mozilla102,Hakim El Hattab,Whim108,Donald Stufft, Nebula</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Notes </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> shell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>手工SQLi语句备忘录</title>
       <link href="2021/05/31/%E6%89%8B%E5%B7%A5SQLi%E8%AF%AD%E5%8F%A5%E5%A4%87%E5%BF%98%E5%BD%95/"/>
       <url>2021/05/31/%E6%89%8B%E5%B7%A5SQLi%E8%AF%AD%E5%8F%A5%E5%A4%87%E5%BF%98%E5%BD%95/</url>
@@ -23,19 +48,6 @@
             <tag> SQLi </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="2021/05/13/shell%E8%84%9A%E6%9C%AC%E9%80%9F%E6%9F%A5/"/>
-      <url>2021/05/13/shell%E8%84%9A%E6%9C%AC%E9%80%9F%E6%9F%A5/</url>
-      
-        <content type="html"><![CDATA[<h2 id="shell脚本速查"><a href="#shell脚本速查" class="headerlink" title="shell脚本速查"></a>shell脚本速查</h2><p>title: shell脚本速查<br>date: 1620872846631<br>categories:</p><ul><li>Notes<br>tags:</li><li>shell</li></ul><hr><h1 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h1><pre><code>var=&quot;123&quot;`ls -al` == $(ls -al)echo $var === echo $&#123;var&#125;获取字符段长度length=$&#123;#string&#125;:&lt;&lt;EOF注释内容EOF关系运算符-eq    检测两个数是否相等，相等返回 true。    [ $a -eq $b ] 返回 false。-ne    检测两个数是否不相等，不相等返回 true。    [ $a -ne $b ] 返回 true。-gt    检测左边的数是否大于右边的，如果是，则返回 true。    [ $a -gt $b ] 返回 false。-lt    检测左边的数是否小于右边的，如果是，则返回 true。    [ $a -lt $b ] 返回 true。-ge    检测左边的数是否大于等于右边的，如果是，则返回 true。    [ $a -ge $b ] 返回 false。-le    检测左边的数是否小于等于右边的，如果是，则返回 true。    [ $a -le $b ] 返回 true。布尔运算符运算符!    非运算，表达式为 true 则返回 false，否则返回 true。    [ ! false ] 返回 true。-o    或运算，有一个表达式为 true 则返回 true。    [ $a -lt 20 -o $b -gt 100 ] 返回 true。-a    与运算，两个表达式都为 true 才返回 true。    [ $a -lt 20 -a $b -gt 100 ] 返回 false。字符串运算符运算符=    检测两个字符串是否相等，相等返回 true。    [ $a = $b ] 返回 false。!=    检测两个字符串是否不相等，不相等返回 true。    [ $a != $b ] 返回 true。-z    检测字符串长度是否为0，为0返回 true。    [ -z $a ] 返回 false。-n    检测字符串长度是否不为 0，不为 0 返回 true。    [ -n &quot;$a&quot; ] 返回 true。$    检测字符串是否为空，不为空返回 true。    [ $a ] 返回 true。文件测试运算符操作符-b file    检测文件是否是块设备文件，如果是，则返回 true。    [ -b $file ] 返回 false。-c file    检测文件是否是字符设备文件，如果是，则返回 true。    [ -c $file ] 返回 false。-d file    检测文件是否是目录，如果是，则返回 true。    [ -d $file ] 返回 false。-f file    检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。    [ -f $file ] 返回 true。-g file    检测文件是否设置了 SGID 位，如果是，则返回 true。    [ -g $file ] 返回 false。-k file    检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。    [ -k $file ] 返回 false。-p file    检测文件是否是有名管道，如果是，则返回 true。    [ -p $file ] 返回 false。-u file    检测文件是否设置了 SUID 位，如果是，则返回 true。    [ -u $file ] 返回 false。-r file    检测文件是否可读，如果是，则返回 true。    [ -r $file ] 返回 true。-w file    检测文件是否可写，如果是，则返回 true。    [ -w $file ] 返回 true。-x file    检测文件是否可执行，如果是，则返回 true。    [ -x $file ] 返回 true。-s file    检测文件是否为空（文件大小是否大于0），不为空返回 true。    [ -s $file ] 返回 true。-e file    检测文件（包括目录）是否存在，如果是，则返回 true。    [ -e $file ] 返回 true。将stdout和stderr重定向到filecommand &gt; file 2&gt;&amp;1屏蔽stdout和stderrcommand &gt; /dev/null 2&gt;&amp;1</code></pre><h1 id="sed使用"><a href="#sed使用" class="headerlink" title="sed使用"></a>sed使用</h1><h2 id="打印行"><a href="#打印行" class="headerlink" title="打印行"></a>打印行</h2><pre><code>sed -n -e &#39;/^root/ p&#39; /etc/passwd == sed -n &#39;&#123;/^root/ p&#125;&#39; /etc/passwd/^root/:root开头 /nobody$/:nobody结尾sed -n &#39;开始行,结束行 p&#39; FILE  开始行和结束行可以是行号也可以是关键字# 寻找包含Paul的行$sed -n &#39;/Paul/ p&#39; source.txt# 从第一行开始到第五行, 从找到开始打印到第五行$sed -n &#39;/Paul/,5 p&#39; source.txt# 从匹配Paul行打印达匹配Addy的行$sed -n &#39;/Paul/,/Addy/ p&#39; source.txt# 在freebsd版sed不能用 匹配Paul行再多输出2行$/usr/local/bin/sed -n &#39;/Paul/,+2 p&#39; source.txt</code></pre><h2 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h2><pre><code>删除全部行sed &#39;d&#39; source.txt 删除空行$sed &#39;/^$/ d&#39; source.txt删除评论行$sed &#39;/^#/ d&#39; source.txt</code></pre><h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><pre><code>将内容重定向写到output.txtsed &#39;w output.txt&#39; source.txt将匹配到关键字的行写到output.txtsed -n &#39;/Ask/,$ w output.txt&#39;</code></pre><h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><pre><code>sed &#39;[address-range|pattern-range] s/original-string/replacement-string/[substitute-flags]&#39; inputfile将Google替换为GitHubsed &#39;s/Google/Github/&#39; source.txt替换匹配Addy的行里面的Google为Githubsed &#39;/Addy/s/Google/Github/&#39; source.txtg可以替换每行的全部符合sed &#39;s/a/A/g&#39;  source.txt指定替换第二个匹配项sed &#39;s/a/A/2&#39;  source.txt替换指定内容给两边加上&lt;&gt;sed &#39;s/^.*/&lt;&amp;&gt;/&#39; FILE修改源文件sed -ised -ibak</code></pre><h2 id="行后增加"><a href="#行后增加" class="headerlink" title="行后增加"></a>行后增加</h2><pre><code>sed &#39;[address] a the-line-to-append&#39; input-filesed &#39;2 a 108,Donald Stufft, Nebula&#39; source.txt101,IAN Bicking,Mozilla102,Hakim El Hattab,Whim108,Donald Stufft, Nebula</code></pre><h2 id="行前插入语法"><a href="#行前插入语法" class="headerlink" title="行前插入语法"></a>行前插入语法</h2><pre><code>sed &#39;2 i 108,Donald Stufft, Nebula&#39; source.txt101,IAN Bicking,Mozilla108,Donald Stufft, Nebula102,Hakim El Hattab,Whim</code></pre><h2 id="修改行语法"><a href="#修改行语法" class="headerlink" title="修改行语法"></a>修改行语法</h2><pre><code>sed &#39;/Paul/ c 108,Donald Stufft, Nebula&#39; source.txt101,IAN Bicking,Mozilla102,Hakim El Hattab,Whim108,Donald Stufft, Nebula</code></pre>]]></content>
-      
-      
       
     </entry>
     
